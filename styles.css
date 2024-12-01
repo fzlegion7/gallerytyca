@@ -11,12 +11,11 @@ body {
     background: linear-gradient(135deg, #ffffff, #87CEEB);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Changed to flex-start to ensure content starts at the top */
     height: 100vh;
     padding: 20px;
-    overflow-y: auto;
-    width: 100%; /* Tambahkan agar lebar tubuh mengikuti lebar layar */
-    overflow-x: hidden; /* Mencegah scroll horizontal */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    width: 100%;
 }
 
 /* Container */
@@ -29,7 +28,8 @@ body {
     width: 100%;
     max-width: 1200px; /* Limit container width */
     margin-top: 20px;
-    overflow-y: auto;
+    max-height: 100vh; /* Allow the container to grow but constrain its height */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 /* Title styling */
@@ -96,11 +96,11 @@ body {
 
 /* Button colors */
 .preview-button {
-    background-color: #FFB3BA; /* Soft peach color for Lihat Foto */
+    background-color: #FFB3BA;
 }
 
 .save-button {
-    background-color: #C8A2D0; /* Soft lavender color for Unduh */
+    background-color: #C8A2D0;
 }
 
 .button:hover {
@@ -110,35 +110,35 @@ body {
 /* Responsiveness */
 @media screen and (max-width: 1200px) {
     .photo-grid {
-        grid-template-columns: repeat(5, 1fr); /* 5 columns for medium screens */
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 
 @media screen and (max-width: 1000px) {
     .photo-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns for smaller screens */
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media screen and (max-width: 768px) {
     .photo-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns for mobile screens */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media screen and (max-width: 480px) {
     .photo-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for very small screens */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Prevent image overflow in small screens */
 @media screen and (max-width: 480px) {
     .photo {
-        max-width: 100%; /* Ensure images are not wider than their containers */
+        max-width: 100%;
     }
 
     .container {
-        padding: 10px; /* Reduce container padding on small screens */
+        padding: 10px;
     }
 }

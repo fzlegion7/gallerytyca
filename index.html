@@ -12,6 +12,13 @@
         <div class="photo-grid" id="photo-grid">
             <!-- Foto akan ditambahkan otomatis dengan JavaScript -->
         </div>
+
+        <!-- Tombol Simpan Semua Foto -->
+        <div class="save-all-container">
+            <a href="https://drive.google.com/file/d/19jNjEEwssnJDMjxRzrtxYm_RkVRzaulG/view?usp=drive_link" target="_blank" class="button save-all-button">
+                Simpan Semua Foto (660 MB)
+            </a>
+        </div>
     </div>
 
     <script>
@@ -35,7 +42,7 @@
             if (i < notifications.length) {
                 alert(notifications[i]);
                 i++;
-                setTimeout(showNotification, 1000); // Delay 1 detik sebelum notifikasi berikutnya
+                setTimeout(showNotification, 500); // Delay 1 detik sebelum notifikasi berikutnya 
             } else {
                 // Setelah notifikasi selesai, baru tampilkan galeri foto
                 showGallery();

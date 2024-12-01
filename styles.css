@@ -11,10 +11,10 @@ body {
     background: linear-gradient(135deg, #ffffff, #87CEEB);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Changed to 'flex-start' for better alignment */
     height: 100vh;
     padding: 20px;
-    overflow-y: auto;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Container */
@@ -26,8 +26,8 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 1200px; /* Limit container width */
-    margin-top: 20px; /* Add margin to avoid cutting off the top */
-    overflow-y: auto;
+    margin-top: 20px;
+    overflow: hidden; /* Hide overflow to prevent cut-off */
 }
 
 /* Title styling */
@@ -120,12 +120,18 @@ body {
 
 @media screen and (max-width: 768px) {
     .photo-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns for mobile screens */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for tablet/mobile screens */
     }
 }
 
 @media screen and (max-width: 480px) {
     .photo-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 columns for very small screens */
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .photo-grid {
+        grid-template-columns: 1fr; /* 1 column for extra small screens */
     }
 }

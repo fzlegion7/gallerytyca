@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Notifikasi sambutan -->
+    <div id="welcome-message">
+        Halo selamat datang di web galeri foto kita yaaa!!
+    </div>
+    
     <div class="container">
         <h1>Gallery Tyca : Trip#2 Jember</h1>
         <div class="photo-grid" id="photo-grid">
@@ -21,6 +26,16 @@
         const startNumber = 27;
         const endNumber = 1;
 
+        // Menampilkan pesan sambutan setelah halaman dimuat
+        window.onload = function() {
+            const welcomeMessage = document.getElementById("welcome-message");
+            welcomeMessage.style.display = "block";
+            setTimeout(function() {
+                welcomeMessage.style.display = "none"; // Menyembunyikan pesan setelah beberapa detik
+            }, 5000); // Menyembunyikan setelah 5 detik
+        };
+
+        // Menambahkan foto ke grid
         for (let i = startNumber; i >= endNumber; i--) {
             const fileName = `${filePrefix}${String(i).padStart(2, '0')}.jpg`;
             const photoContainer = `

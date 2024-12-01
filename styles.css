@@ -57,6 +57,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .photo:hover {
@@ -71,36 +72,58 @@ body {
     margin-top: 10px;
 }
 
-/* Button styling */
-.button {
+/* General Button styling */
+.button, .button a { /* Menambahkan selector .button a untuk link */
     display: inline-block;
     text-decoration: none;
     color: #fff;
     padding: 8px 12px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 14px; /* Menyesuaikan ukuran font agar konsisten */
     font-weight: bold;
     transition: background-color 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan halus pada tombol */
+    border: none; /* Menghapus border pada tombol */
 }
 
-/* Button colors */
+/* Specific Button colors */
 .preview-button {
-    background-color: #FFB3BA;
+    background-color: #FFB3BA; /* Warna merah muda */
 }
 
 .save-button {
-    background-color: #C8A2D0;
+    background-color: #C8A2D0; /* Warna ungu */
 }
 
 .save-all-button {
-    background-color: #8FBC8F;
-    padding: 12px 20px;
-    font-size: 16px;
+    background-color: #8FBC8F; /* Warna hijau */
 }
 
-/* Hover effect */
-.button:hover {
+.view-photo-button {
+    background-color: #FF69B4; /* Warna pink terang */
+}
+
+/* Hover effects */
+.button:hover, .button a:hover {
     opacity: 0.8;
+}
+
+.preview-button:hover {
+    background-color: #FF69B4;
+}
+
+.save-button:hover {
+    background-color: #D8A1D9;
+}
+
+.save-all-button:hover {
+    background-color: #7FAF7F;
+}
+
+.view-photo-button:hover {
+    background-color: #FF1493;
 }
 
 /* Save all button container */
@@ -133,4 +156,75 @@ body {
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.8);
+    padding-top: 60px;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+#modal-caption {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styling for the "Pegel Aku Cakkk" button */
+#pegel-button-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#pegel-button {
+    background-color: #1E3A8A; /* Biru matang (navy) untuk kontras yang baik */
+    padding: 20px 40px;
+    font-size: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white; /* Pastikan tulisan berwarna putih untuk kontras */
+}
+
+#pegel-button:hover {
+    background-color: #2563EB; /* Biru lebih terang ketika hover */
 }

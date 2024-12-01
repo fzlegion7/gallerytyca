@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Notifikasi sambutan -->
-    <div id="welcome-message">
-        Halo selamat datang di web galeri foto kita yaaa!!
-    </div>
-    
     <div class="container">
         <h1>Gallery Tyca : Trip#2 Jember</h1>
         <div class="photo-grid" id="photo-grid">
@@ -20,35 +15,60 @@
     </div>
 
     <script>
-        const photoGrid = document.getElementById('photo-grid');
-        const folderPath = "photos/";
-        const filePrefix = "0000484100";
-        const startNumber = 27;
-        const endNumber = 1;
+        // Notifikasi berurutan
+        const notifications = [
+            "halo nyedd!!!",
+            "selamat datang di gallery foto trip ke #2 yaa",
+            "udah siap belum nyedd???",
+            "yakinn yaa sudah siappp??",
+            "okeyyy hitung mundur dari 3 yaa!!!",
+            "3",
+            "2",
+            "1",
+            "selamat menikmati :)"
+        ];
 
-        // Menampilkan pesan sambutan setelah halaman dimuat
-        window.onload = function() {
-            const welcomeMessage = document.getElementById("welcome-message");
-            welcomeMessage.style.display = "block";
-            setTimeout(function() {
-                welcomeMessage.style.display = "none"; // Menyembunyikan pesan setelah beberapa detik
-            }, 5000); // Menyembunyikan setelah 5 detik
-        };
+        let i = 0;
 
-        // Menambahkan foto ke grid
-        for (let i = startNumber; i >= endNumber; i--) {
-            const fileName = `${filePrefix}${String(i).padStart(2, '0')}.jpg`;
-            const photoContainer = `
-                <div class="photo-container">
-                    <img src="${folderPath}${fileName}" alt="Foto ${i}" class="photo">
-                    <div class="buttons">
-                        <a href="${folderPath}${fileName}" target="_blank" class="button preview-button">Lihat Foto</a>
-                        <a href="${folderPath}${fileName}" download="${fileName}" class="button save-button">Simpan Foto</a>
-                    </div>
-                </div>
-            `;
-            photoGrid.innerHTML += photoContainer;
+        // Fungsi untuk menampilkan notifikasi
+        function showNotification() {
+            if (i < notifications.length) {
+                alert(notifications[i]);
+                i++;
+                setTimeout(showNotification, 1000); // Delay 1 detik sebelum notifikasi berikutnya
+            } else {
+                // Setelah notifikasi selesai, baru tampilkan galeri foto
+                showGallery();
+            }
         }
+
+        // Fungsi untuk menampilkan galeri foto setelah notifikasi selesai
+        function showGallery() {
+            const photoGrid = document.getElementById('photo-grid');
+            const folderPath = "photos/";
+            const filePrefix = "0000484100";
+            const startNumber = 27;
+            const endNumber = 1;
+
+            for (let i = startNumber; i >= endNumber; i--) {
+                const fileName = `${filePrefix}${String(i).padStart(2, '0')}.jpg`;
+                const photoContainer = `
+                    <div class="photo-container">
+                        <img src="${folderPath}${fileName}" alt="Foto ${i}" class="photo">
+                        <div class="buttons">
+                            <a href="${folderPath}${fileName}" target="_blank" class="button preview-button">Lihat Foto</a>
+                            <a href="${folderPath}${fileName}" download="${fileName}" class="button save-button">Simpan Foto</a>
+                        </div>
+                    </div>
+                `;
+                photoGrid.innerHTML += photoContainer;
+            }
+        }
+
+        // Mulai menampilkan notifikasi ketika halaman dimuat
+        window.onload = function() {
+            showNotification();
+        };
     </script>
 </body>
 </html>

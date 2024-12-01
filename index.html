@@ -22,7 +22,6 @@
     </div>
 
     <script>
-        // Notifikasi berurutan
         const notifications = [
             "halo nyedd!!!",
             "selamat datang di gallery foto trip ke #2 yaa",
@@ -37,19 +36,16 @@
 
         let i = 0;
 
-        // Fungsi untuk menampilkan notifikasi
         function showNotification() {
             if (i < notifications.length) {
                 alert(notifications[i]);
                 i++;
-                setTimeout(showNotification, 500); // Delay 1 detik sebelum notifikasi berikutnya 
+                setTimeout(showNotification, 500);
             } else {
-                // Setelah notifikasi selesai, baru tampilkan galeri foto
                 showGallery();
             }
         }
 
-        // Fungsi untuk menampilkan galeri foto setelah notifikasi selesai
         function showGallery() {
             const photoGrid = document.getElementById('photo-grid');
             const folderPath = "photos/";
@@ -72,7 +68,6 @@
             }
         }
 
-        // Mulai menampilkan notifikasi ketika halaman dimuat
         window.onload = function() {
             showNotification();
         };

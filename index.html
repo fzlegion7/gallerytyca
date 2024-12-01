@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Konten utama yang akan disembunyikan terlebih dahulu -->
+    <div id="main-content" class="container" style="display: none;">
         <h1>Gallery Tyca : Trip#2 Jember</h1>
         <div class="photo-grid" id="photo-grid">
             <!-- Foto akan ditambahkan otomatis dengan JavaScript -->
@@ -36,22 +37,44 @@
 
         let i = 0;
 
+        // Fungsi untuk menampilkan notifikasi
         function showNotification() {
             if (i < notifications.length) {
                 alert(notifications[i]);
                 i++;
-                setTimeout(showNotification, 500);
+                setTimeout(showNotification, 500); // Delay 1 detik sebelum notifikasi berikutnya 
             } else {
-                showGallery();
+                // Setelah notifikasi selesai, tampilkan prompt untuk password
+                askPassword();
             }
         }
 
+        // Fungsi untuk menampilkan prompt password
+        function askPassword() {
+            const password = prompt("Masukkan password untuk melihat galeri foto:");
+            const correctPassword = "12345"; // Ganti dengan password yang kamu inginkan
+
+            if (password === correctPassword) {
+                // Jika password benar, tampilkan galeri
+                showGallery();
+            } else {
+                // Jika password salah, beri tahu pengguna dan coba lagi
+                alert("Password salah! Coba lagi.");
+                askPassword(); // Tampilkan prompt lagi
+            }
+        }
+
+        // Fungsi untuk menampilkan galeri foto
         function showGallery() {
             const photoGrid = document.getElementById('photo-grid');
             const folderPath = "photos/";
             const filePrefix = "0000484100";
             const startNumber = 27;
             const endNumber = 1;
+
+            // Menampilkan konten setelah password benar
+            const mainContent = document.getElementById('main-content');
+            mainContent.style.display = 'block';
 
             for (let i = startNumber; i >= endNumber; i--) {
                 const fileName = `${filePrefix}${String(i).padStart(2, '0')}.jpg`;
@@ -68,6 +91,7 @@
             }
         }
 
+        // Mulai menampilkan notifikasi ketika halaman dimuat
         window.onload = function() {
             showNotification();
         };
